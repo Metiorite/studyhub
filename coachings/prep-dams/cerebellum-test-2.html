@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Cerebellum — Clinical Correlations | Prep DAMS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="../../hub.css" />
+<style>
+    .quiz-wrap { max-width: 640px; }
+    .q-card { background: var(--panel); border: 1px solid var(--line); border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.25rem; }
+    .q-text { font-weight: 700; font-size: 1.05rem; margin-bottom: 1rem; }
+    .opt { display: block; width: 100%; text-align: left; background: var(--panel-raised); border: 1.5px solid var(--line); color: var(--ink);
+           padding: 0.7rem 1rem; border-radius: 0.65rem; margin-bottom: 0.55rem; cursor: pointer; font-size: 0.94rem; font-family: inherit; transition: all .15s ease; }
+    .opt:hover { border-color: var(--brand-cyan); }
+    .opt.correct { background: rgba(31,111,92,0.35); border-color: var(--brand-teal); }
+    .opt.wrong { background: rgba(226,98,43,0.35); border-color: var(--brand-orange); }
+    .opt:disabled { cursor: default; }
+    .score-banner { background: var(--panel); border: 1px solid var(--line); border-radius: 1rem; padding: 1.25rem 1.5rem; text-align: center; font-weight: 700; margin-bottom: 1.25rem; }
+    .btn-restart { background: var(--brand-cyan); color: #05221d; border: none; padding: 0.6rem 1.3rem; border-radius: 999px; font-weight: 700; cursor: pointer; }
+</style>
+</head>
+<body>
+
+<div class="app-shell">
+    <aside class="sidebar">
+        <div class="brand"><span class="dot">🧠</span> StudyHub</div>
+        <div class="nav-group">
+            <a class="nav-item" href="../../index.html"><span class="nav-ico">⌂</span> For you</a>
+        </div>
+        <div class="nav-label">Coachings</div>
+        <div class="nav-group">
+            <a class="nav-item" href="../marrow/index.html"><span class="nav-ico">◆</span> Marrow Qbank</a>
+            <a class="nav-item active" href="index.html"><span class="nav-ico">◆</span> Prep DAMS</a>
+        </div>
+    </aside>
+
+    <main class="main quiz-wrap">
+        <div class="breadcrumb"><a href="../../index.html">For you</a> / <a href="index.html">Prep DAMS</a> / Test 2</div>
+        <div class="top-row"><div><h1>Cerebellum — Clinical Correlations</h1><div class="subtitle">5 questions · demo test</div></div></div>
+
+        <div id="score-banner" class="score-banner" style="display:none;"></div>
+        <div id="quiz-root"></div>
+        <button id="restart-btn" class="btn-restart" style="display:none;">Restart</button>
+    </main>
+</div>
+
+<script>
+    // ---- Demo question data. Replace this array with the real test content. ----
+    const QUESTIONS = [
+        { q: "A patient presents with a wide-based, staggering gait but normal limb coordination when lying down. This points to a lesion of the:", options: ["Cerebellar hemisphere", "Vermis", "Dentate nucleus", "Cerebral cortex"], correct: 1 },
+        { q: "Dysmetria and intention tremor on finger-to-nose testing suggest a lesion of the:", options: ["Vermis", "Cerebellar hemisphere", "Flocculonodular lobe", "Basal ganglia"], correct: 1 },
+        { q: "Nystagmus and disequilibrium without limb ataxia is most typical of a lesion in the:", options: ["Anterior lobe", "Flocculonodular lobe", "Posterior lobe", "Dentate nucleus"], correct: 1 },
+        { q: "Rebound phenomenon (loss of check) is a classic sign of dysfunction in the:", options: ["Basal ganglia", "Cerebellum", "Thalamus", "Spinal cord"], correct: 1 },
+        { q: "Which cerebellar sign is characterized by inability to perform rapid alternating movements?", options: ["Dysdiadochokinesia", "Dysmetria", "Nystagmus", "Hypotonia"], correct: 0 }
+    ];
+
+    let current = 0, score = 0, answered = false;
+    const root = document.getElementById('quiz-root');
+    const restartBtn = document.getElementById('restart-btn');
+    const banner = document.getElementById('score-banner');
+
+    function render() {
+        if (current >= QUESTIONS.length) {
+            root.innerHTML = '';
+            banner.style.display = 'block';
+            banner.textContent = `You scored ${score} / ${QUESTIONS.length}`;
+            restartBtn.style.display = 'inline-block';
+            return;
+        }
+        answered = false;
+        const item = QUESTIONS[current];
+        root.innerHTML = `
+            <div class="q-card">
+                <div class="q-text">Q${current + 1}. ${item.q}</div>
+                ${item.options.map((opt, i) => `<button class="opt" data-i="${i}">${opt}</button>`).join('')}
+            </div>
+        `;
+        root.querySelectorAll('.opt').forEach(btn => {
+            btn.addEventListener('click', () => selectOption(parseInt(btn.dataset.i)));
+        });
+    }
+
+    function selectOption(i) {
+        if (answered) return;
+        answered = true;
+        const item = QUESTIONS[current];
+        const btns = root.querySelectorAll('.opt');
+        btns.forEach((b, idx) => {
+            b.disabled = true;
+            if (idx === item.correct) b.classList.add('correct');
+            else if (idx === i) b.classList.add('wrong');
+        });
+        if (i === item.correct) score++;
+        setTimeout(() => { current++; render(); }, 700);
+    }
+
+    restartBtn.addEventListener('click', () => {
+        current = 0; score = 0;
+        banner.style.display = 'none';
+        restartBtn.style.display = 'none';
+        render();
+    });
+
+    render();
+</script>
+</body>
+</html>
