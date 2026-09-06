@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>StudyHub — Your Qbanks</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="hub.css" />
+</head>
+<body>
+
+<div class="app-shell">
+
+    <aside class="sidebar">
+        <div class="brand"><span class="dot">🧠</span> StudyHub</div>
+
+        <div class="nav-group">
+            <a class="nav-item active" href="index.html"><span class="nav-ico">⌂</span> For you</a>
+            <a class="nav-item" href="#"><span class="nav-ico">⌕</span> Search</a>
+            <a class="nav-item" href="#"><span class="nav-ico">▤</span> Library</a>
+            <a class="nav-item" href="#"><span class="nav-ico">☆</span> Bookmarks</a>
+        </div>
+
+        <div class="nav-label">Coachings</div>
+        <div class="nav-group">
+            <a class="nav-item" href="coachings/marrow/index.html"><span class="nav-ico">◆</span> Marrow Qbank</a>
+            <a class="nav-item" href="coachings/prep-dams/index.html"><span class="nav-ico">◆</span> Prep DAMS</a>
+        </div>
+
+        <div class="sidebar-footer nav-group">
+            <a class="nav-item" href="#"><span class="nav-ico">⚙</span> Settings</a>
+            <a class="nav-item" href="#"><span class="nav-ico">⏻</span> Log out</a>
+        </div>
+    </aside>
+
+    <main class="main">
+
+        <div class="top-row">
+            <div>
+                <h1>For you</h1>
+                <div class="subtitle">Pick up where you left off, or explore a coaching</div>
+            </div>
+            <input class="search-box" placeholder="Search tests, topics..." />
+        </div>
+
+        <div class="hero-grid">
+            <a class="hero-card teal" href="coachings/marrow/index.html">
+                <div>
+                    <div class="hero-eyebrow">16,376 QUESTIONS</div>
+                    <div class="hero-title">Marrow Edition 8<br>Qbank</div>
+                </div>
+                <span class="hero-cta">▶ Open Qbank</span>
+                <span class="hero-mascot">📘</span>
+            </a>
+            <a class="hero-card orange" href="coachings/prep-dams/index.html">
+                <div>
+                    <div class="hero-eyebrow">DEMO · 2 TESTS</div>
+                    <div class="hero-title">Prep DAMS<br>Cerebellum</div>
+                </div>
+                <span class="hero-cta">▶ Open Tests</span>
+                <span class="hero-mascot">🧩</span>
+            </a>
+        </div>
+
+        <div class="section-head">
+            <h2>All coachings</h2>
+            <a href="#">View more →</a>
+        </div>
+        <div class="card-grid">
+            <a class="mini-card c-cyan" href="coachings/marrow/index.html">
+                <span class="eyebrow">QBANK</span>
+                <span class="title">Marrow Edition 8</span>
+            </a>
+            <a class="mini-card c-orange" href="coachings/prep-dams/index.html">
+                <span class="eyebrow">DEMO</span>
+                <span class="title">Prep DAMS Cerebellum</span>
+            </a>
+            <a class="mini-card c-magenta" href="#" onclick="return false;" style="opacity:0.5;cursor:not-allowed;">
+                <span class="eyebrow">COMING SOON</span>
+                <span class="title">Add a new coaching</span>
+            </a>
+            <a class="mini-card c-yellow" href="#" onclick="return false;" style="opacity:0.5;cursor:not-allowed;">
+                <span class="eyebrow">COMING SOON</span>
+                <span class="title">Add a new coaching</span>
+            </a>
+        </div>
+
+        <div class="section-head">
+            <h2>Recently added</h2>
+        </div>
+        <a class="list-row" href="coachings/marrow/index.html">
+            <div class="list-thumb c-cyan">📘</div>
+            <div class="list-info">
+                <div class="name">Marrow Edition 8 — Qbank</div>
+                <div class="meta">829 tests · All subjects</div>
+            </div>
+            <span class="list-tag">Full qbank</span>
+        </a>
+        <a class="list-row" href="coachings/prep-dams/index.html">
+            <div class="list-thumb c-orange">🧩</div>
+            <div class="list-info">
+                <div class="name">Prep DAMS — Cerebellum</div>
+                <div class="meta">2 tests · Neuroanatomy</div>
+            </div>
+            <span class="list-tag">Demo</span>
+        </a>
+
+    </main>
+</div>
+
+</body>
+</html>

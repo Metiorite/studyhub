@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Lora:ital,wght@0,600;0,700&display=swap');
+
+:root {
+    --bg: #101114;
+    --panel: #17181c;
+    --panel-raised: #1e2024;
+    --ink: #f2f1ee;
+    --muted: #8b8d94;
+    --line: #2a2c31;
+    --brand-teal: #1f6f5c;
+    --brand-yellow: #f2b705;
+    --brand-orange: #e2622b;
+    --brand-magenta: #d63b7e;
+    --brand-cyan: #14b8a6;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+.app-shell {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+    width: 220px;
+    flex-shrink: 0;
+    background: var(--panel);
+    border-right: 1px solid var(--line);
+    padding: 1.5rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+    margin-bottom: 2rem;
+    padding: 0 0.4rem;
+}
+
+.brand .dot {
+    width: 30px; height: 30px;
+    border-radius: 9px;
+    background: linear-gradient(135deg, var(--brand-teal), var(--brand-cyan));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+}
+
+.nav-group { display: flex; flex-direction: column; gap: 0.15rem; margin-bottom: 1.5rem; }
+
+.nav-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    padding: 0.4rem;
+    margin-top: 0.5rem;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.55rem 0.7rem;
+    border-radius: 0.6rem;
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.92rem;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.nav-item:hover { background: var(--panel-raised); color: var(--ink); }
+.nav-item.active { background: var(--panel-raised); color: var(--ink); }
+.nav-item.active .nav-ico { color: var(--brand-cyan); }
+.nav-ico { width: 18px; text-align: center; }
+
+.sidebar-footer { margin-top: auto; }
+
+/* ---------- Main content ---------- */
+.main {
+    flex: 1;
+    padding: 1.75rem 2.25rem 3rem;
+    max-width: 1200px;
+}
+
+.top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.75rem;
+}
+
+.top-row h1 {
+    font-family: 'Lora', serif;
+    font-size: 1.6rem;
+    margin: 0;
+}
+
+.top-row .subtitle { color: var(--muted); font-size: 0.9rem; margin-top: 0.2rem; }
+
+.search-box {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 0.7rem;
+    padding: 0.55rem 1rem;
+    color: var(--muted);
+    font-size: 0.88rem;
+    width: 220px;
+}
+
+/* ---------- Hero cards ---------- */
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.1rem;
+    margin-bottom: 2.25rem;
+}
+
+.hero-card {
+    position: relative;
+    border-radius: 1.1rem;
+    padding: 1.4rem 1.5rem;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    text-decoration: none;
+    color: #12131a;
+    box-shadow: 0 12px 26px -12px rgba(0,0,0,0.5);
+    transition: transform 0.18s ease;
+}
+
+.hero-card:hover { transform: translateY(-3px); }
+
+.hero-card.teal { background: linear-gradient(135deg, #ffd23f, #f2b705); }
+.hero-card.orange { background: linear-gradient(135deg, #ff7a45, #e2622b); color: #2a0d02; }
+
+.hero-eyebrow { font-size: 0.78rem; font-weight: 700; opacity: 0.75; }
+.hero-title { font-family: 'Lora', serif; font-weight: 700; font-size: 1.4rem; margin-top: 0.3rem; line-height: 1.2; }
+
+.hero-cta {
+    align-self: flex-start;
+    margin-top: 0.9rem;
+    background: #12131a;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.82rem;
+    padding: 0.5rem 1.1rem;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.hero-mascot {
+    position: absolute;
+    right: -10px;
+    bottom: -10px;
+    font-size: 5.5rem;
+    opacity: 0.35;
+    transform: rotate(-8deg);
+}
+
+/* ---------- Section rows ---------- */
+.section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1.75rem 0 0.9rem;
+}
+
+.section-head h2 { font-size: 1.05rem; font-weight: 700; margin: 0; }
+.section-head a { color: var(--muted); font-size: 0.85rem; text-decoration: none; font-weight: 600; }
+
+.list-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.85rem 0.5rem;
+    border-radius: 0.75rem;
+    text-decoration: none;
+    color: var(--ink);
+    transition: background 0.15s ease;
+}
+.list-row:hover { background: var(--panel); }
+
+.list-thumb {
+    width: 42px; height: 42px;
+    border-radius: 0.6rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.15rem;
+    flex-shrink: 0;
+}
+
+.list-info { flex: 1; min-width: 0; }
+.list-info .name { font-weight: 700; font-size: 0.95rem; }
+.list-info .meta { color: var(--muted); font-size: 0.82rem; }
+.list-tag { color: var(--muted); font-size: 0.82rem; }
+
+/* ---------- Card grid (per-coaching test cards) ---------- */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 1rem;
+}
+
+.mini-card {
+    border-radius: 1rem;
+    padding: 1.1rem;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-decoration: none;
+    color: #14151b;
+    font-weight: 700;
+    box-shadow: 0 8px 18px -10px rgba(0,0,0,0.5);
+    transition: transform 0.15s ease;
+}
+.mini-card:hover { transform: translateY(-3px); }
+.mini-card .eyebrow { font-size: 0.72rem; opacity: 0.75; font-weight: 700; }
+.mini-card .title { font-family: 'Lora', serif; font-size: 1.05rem; margin-top: 0.35rem; }
+
+.c-magenta { background: linear-gradient(135deg, #f472b6, var(--brand-magenta)); color: #2b0a1a; }
+.c-cyan { background: linear-gradient(135deg, #5eead4, var(--brand-cyan)); color: #05221d; }
+.c-orange { background: linear-gradient(135deg, #fb923c, var(--brand-orange)); color: #2a0d02; }
+.c-yellow { background: linear-gradient(135deg, #fde68a, var(--brand-yellow)); color: #2b1e02; }
+
+/* ---------- Coaching landing (used by prep-dams etc.) ---------- */
+.breadcrumb { color: var(--muted); font-size: 0.85rem; margin-bottom: 0.6rem; }
+.breadcrumb a { color: var(--muted); text-decoration: none; }
+.breadcrumb a:hover { color: var(--ink); }
+
+@media (max-width: 720px) {
+    .app-shell { flex-direction: column; }
+    .sidebar { width: 100%; height: auto; position: static; flex-direction: row; overflow-x: auto; padding: 1rem; }
+    .brand { margin-bottom: 0; margin-right: 1rem; }
+    .nav-group { flex-direction: row; margin-bottom: 0; }
+    .nav-label { display: none; }
+    .sidebar-footer { display: none; }
+    .main { padding: 1.25rem; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .search-box { display: none; }
+}
